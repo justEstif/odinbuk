@@ -3,6 +3,8 @@
 ## auth
 
 - /sign-up
+  - check if the user is logged in
+  - if user -> reroute to home page
 - /sign-in
 - /sign-out
 
