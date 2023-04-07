@@ -1,4 +1,17 @@
-# Routes
+# BE Routes
+
+- `/users`
+
+  - GET:
+
+- `/users/:id`
+  - GET:
+    - filters: ?all, ?profile, ?liked-posts, ?friends, ?sent-request, ?received-requests
+  - POST:
+  - PUT:
+  - optional filters
+    - ?all, ?profile, ?liked-posts, ?friends, ?sent-request, ?received-requests
+    - posts, profile, liked-posts, friends, sent-requests, received-requests
 
 ## users
 
