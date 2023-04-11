@@ -18,13 +18,19 @@
 		Password
 		<input type="password" id="password" name="password" placeholder="password" required />
 	</label>
-	<button type="submit">Submit</button>
+	<button type="submit">Sign up</button>
 </form>
 {#if form?.message}
 	<p class="error">{form.message || ''}</p>
 {/if}
 
-<div class="grid">
-	<a href="/sign-in" class="secondary" role="button">Sign in</a>
-	<a href="/api/oauth?provider=facebook" class="contrast" role="button">Continue with Github</a>
-</div>
+<a href="/api/oauth?provider=facebook" class="facebook outline contrast" role="button"
+	>Continue with FaceBook?</a>
+
+<style>
+	a.facebook {
+		border: none;
+		padding: 0;
+		text-align: right;
+	}
+</style>

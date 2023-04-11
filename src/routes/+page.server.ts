@@ -7,3 +7,6 @@ export const load = async ({ locals }) => {
 		user
 	};
 };
+
+// GET posts
+// POST create a post

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
 	import { enhance } from '$app/forms';
-	export let user: null | {};
+	import type { User } from 'lucia-auth';
+	export let user: null | User;
 </script>
 
 <header class="container">
@@ -10,9 +10,17 @@
 		<ul>
 			{#if user}
 				<li>
-					<form use:enhance method="post" action="/api/sign-out">
-						<button type="submit" value="Sign out">Sign out</button>
-					</form>
+					<details role="list" dir="rtl">
+						<summary aria-haspopup="listbox" role="link" class="contrast">{user.username}</summary>
+						<ul role="listbox">
+							<li>Profile</li>
+							<li>
+								<form use:enhance method="post" action="/api/sign-out">
+									<button type="submit" value="Sign out" class="outline sign-out">Sign out</button>
+								</form>
+							</li>
+						</ul>
+					</details>
 				</li>
 			{:else}
 				<li><a href="/sign-in">Sign in</a></li>
@@ -21,3 +29,10 @@
 		</ul>
 	</nav>
 </header>
+
+<style>
+	button.sign-out {
+		border: none;
+		padding: 0;
+	}
+</style>

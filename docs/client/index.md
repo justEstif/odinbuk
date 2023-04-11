@@ -2,5 +2,6 @@
 
 TODO:
 
-- [ ] /sign-in
-- [ ] /sign-up
+- [x] /sign-in
+- [x] /sign-up
+- [x] /api/sign-out
