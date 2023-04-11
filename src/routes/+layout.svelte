@@ -1,10 +1,10 @@
 <script lang="ts">
 	import '@picocss/pico';
 	import Nav from '$lib/nav.svelte';
+	export let data;
 </script>
 
-<Nav />
-
+<Nav user={data.user} />
 <main class="container">
 	<slot />
 </main>
