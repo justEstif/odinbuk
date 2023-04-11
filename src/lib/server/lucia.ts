@@ -4,8 +4,12 @@ import prisma from '@lucia-auth/adapter-prisma';
 import { dev } from '$app/environment';
 import { PrismaClient } from '@prisma/client';
 
-import { github } from '@lucia-auth/oauth/providers';
-import { GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET } from '$env/static/private';
+import { facebook } from '@lucia-auth/oauth/providers';
+import {
+	FACEBOOK_CLIENT_ID,
+	FACEBOOK_CLIENT_SECRET,
+	FACEBOOK_REDIRECT_URI
+} from '$env/static/private';
 
 export const auth = lucia({
 	adapter: prisma(new PrismaClient()),
@@ -19,9 +23,10 @@ export const auth = lucia({
 	middleware: sveltekit()
 });
 
-export const githubAuth = github(auth, {
-	clientId: GITHUB_CLIENT_ID,
-	clientSecret: GITHUB_CLIENT_SECRET
+export const facebookAuth = facebook(auth, {
+	clientId: FACEBOOK_CLIENT_ID,
+	clientSecret: FACEBOOK_CLIENT_SECRET,
+	redirectUri: FACEBOOK_REDIRECT_URI
 });
 
 export type Auth = typeof auth;

@@ -1,4 +1,4 @@
-import { auth, githubAuth } from '$lib/server/lucia';
+import { auth, facebookAuth } from '$lib/server/lucia';
 import { redirect } from '@sveltejs/kit';
 
 export const GET = async ({ cookies, url, locals }) => {
@@ -7,11 +7,11 @@ export const GET = async ({ cookies, url, locals }) => {
 	const storedState = cookies.get('oauth_state');
 	if (storedState !== state || !code || !state) throw new Response(null, { status: 401 });
 	try {
-		const { existingUser, providerUser, createUser } = await githubAuth.validateCallback(code);
+		const { existingUser, providerUser, createUser } = await facebookAuth.validateCallback(code);
 		const user =
 			existingUser ??
 			(await createUser({
-				username: providerUser.login
+				username: providerUser.name
 			}));
 		const session = await auth.createSession(user.userId);
 		locals.auth.setSession(session);
