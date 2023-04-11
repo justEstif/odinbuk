@@ -23,5 +23,7 @@
 {#if form?.message}
 	<p class="error">{form.message || ''}</p>
 {/if}
-<a href="/sign-up" class="secondary" role="button">Sign up</a>
-<a href="/api/oauth?provider=github" class="contrast" role="button">Continue with Github</a>
+<div class="grid">
+	<a href="/sign-up" class="secondary" role="button">Sign up</a>
+	<a href="/api/oauth?provider=facebook" class="contrast" role="button">Continue with FaceBook</a>
+</div>

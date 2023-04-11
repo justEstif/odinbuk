@@ -26,5 +26,5 @@
 
 <div class="grid">
 	<a href="/sign-in" class="secondary" role="button">Sign in</a>
-	<a href="/api/oauth?provider=github" class="contrast" role="button">Continue with Github</a>
+	<a href="/api/oauth?provider=facebook" class="contrast" role="button">Continue with Github</a>
 </div>

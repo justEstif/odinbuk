@@ -1,9 +1,9 @@
-import { githubAuth } from '$lib/server/lucia';
+import { facebookAuth } from '$lib/server/lucia';
 
 export const GET = async ({ url, cookies }) => {
 	const provider = url.searchParams.get('provider');
-	if (provider === 'github') {
-		const [url, state] = await githubAuth.getAuthorizationUrl();
+	if (provider === 'facebook') {
+		const [url, state] = await facebookAuth.getAuthorizationUrl();
 		cookies.set('oauth_state', state, {
 			path: '/',
 			maxAge: 60 * 60
