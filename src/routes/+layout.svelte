@@ -1,11 +1,14 @@
 <script lang="ts">
-	import '@picocss/pico';
+	import '../app.css';
 	import 'iconify-icon';
 	import Nav from '$lib/nav.svelte';
 	export let data;
 </script>
 
-<Nav user={data.user} />
+<header class="container mx-auto">
+	<Nav user={data.user} />
+</header>
+
 <main class="container">
 	<slot />
 </main>
