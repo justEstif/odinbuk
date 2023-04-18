@@ -14,6 +14,7 @@ export const actions: Actions = {
 		const form = await request.formData();
 		const username = form.get('username');
 		const password = form.get('password');
+		// TODO form validation?
 		if (!username || !password || typeof username !== 'string' || typeof password !== 'string') {
 			return fail(400, {
 				message: 'Invalid input'

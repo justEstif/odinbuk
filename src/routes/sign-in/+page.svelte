@@ -24,6 +24,7 @@
 	<p class="error">{form.message || ''}</p>
 {/if}
 
+<!-- TODO: check if it navigates to facebook -->
 <a href="/api/oauth?provider=facebook" class="facebook outline contrast" role="button"
 	>Continue with FaceBook?</a>
 
