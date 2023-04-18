@@ -14,42 +14,59 @@
 </details>
 
 <figure>
-	<figcaption>
-		<a href="#userpage">@username</a>
-		<small>2h</small>
+	<figcaption class="header">
+		<div>
+			<a href="#userpage">@username</a>
+			<small>2h</small>
+		</div>
+		<div>
+			<small>1 like</small>
+			<small>2 comments</small>
+		</div>
 	</figcaption>
 	<img src="https://placehold.co/600x400" alt="Architecture" />
 
-	<footer>
-		<a href="#like">
+	<figcaption class="footer">
+		<button class="outline like">
 			<iconify-icon icon="fa-regular:heart" />
-		</a>
-		<button on:click={() => (showModal = true)}>
+		</button>
+
+		<button on:click={() => (showModal = true)} class="outline comment">
 			<iconify-icon icon="fa-regular:comment-dots" />
 		</button>
-	</footer>
+	</figcaption>
 </figure>
+<hr />
 
 <Modal bind:showModal>
-	<article>
-		<h3>Confirm your action!</h3>
-		<p>
-			Mauris non nibh vel nisi sollicitudin malesuada. Donec ut sagittis erat. Praesent eu eros
-			felis. Ut consectetur placerat pulvinar.
-		</p>
-		<footer>
-			<button on:click={() => (showModal = false)}>Cancel</button>
-		</footer>
-	</article>
+	<p slot="title">Create a comment</p>
+	<form class="comment-form">
+		<div class="grid">
+			<label for="comment">
+				Comment
+				<input type="text" id="comment" name="comment" placeholder="Comment" required />
+			</label>
+		</div>
+	</form>
 </Modal>
 
 <style>
-	footer {
-		padding: 10px 0px;
+	figcaption {
 		display: flex;
 		gap: var(--grid-spacing-horizontal);
 	}
-	iconify-icon {
-		font-size: 20px;
+	button.like,
+	button.comment {
+		width: fit-content;
+		border: none;
+		padding: 0;
+		margin: 0;
+	}
+	form.comment-form {
+		margin: 0;
+	}
+	figcaption.header {
+		display: flex;
+		justify-content: space-between;
 	}
 </style>
