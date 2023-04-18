@@ -11,6 +11,16 @@
 			{#if user}
 				<li>
 					<details role="list" dir="rtl">
+						<summary aria-haspopup="listbox" role="link" class="contrast">users</summary>
+						<ul role="listbox">
+							<li>sent requests</li>
+							<li>received requests</li>
+							<li><a href="/users">Users</a></li>
+						</ul>
+					</details>
+				</li>
+				<li>
+					<details role="list" dir="rtl">
 						<summary aria-haspopup="listbox" role="link" class="contrast">{user.username}</summary>
 						<ul role="listbox">
 							<li>Profile</li>
@@ -31,8 +41,12 @@
 </header>
 
 <style>
+	form {
+		margin: 0;
+	}
 	button.sign-out {
 		border: none;
 		padding: 0;
+		margin: 0;
 	}
 </style>
