@@ -2,26 +2,25 @@
 
 content: liked-posts, liked-comments, posts
 
+- `GET /users`: get user summary and post
+
 - `GET users/:id`: get user summary and posts
-- `GET users/:id?content=liked-posts`: get liked posts
-- `GET users/:id?content=friends`: get liked posts
-- `GET users/:id?content=comments`: get comments
-- `GET users/:id?content=liked-comments`: get liked comments
+- `DELETE users/:id`: delete user
+- `PUT users/:id`: update user
 
-- `GET users/:id?content=requests`: get sent requests
-- `POST users/:id?content=requests`: get sent requests
+- `GET /users/:id/posts`: get user's liked posts
 
-- `GET users/:id?content=received-requests`: get received requests
+- `GET /users/:id/liked-posts`: get user's liked posts
+- `GET /users/:id/liked-comments`: get user's liked comments
+- `GET /users/:id/comments`: get user's liked comments
 
-- `GET users/:id?content=sent-requests`: get sent posts
-- `POST users/:id?content=sent-request`: send a friend request
-- `DELETE users/:id?content=sent-request`: delete sent request
+- `GET /users/:id/friend-requests`: get requests
+- `POST /users/:id/friend-requests/:id`: accept requests from user
+- `DELETE /users/:id/friend-requests/:id`: deny request from user
 
-- `POST users/:id?content=accept-request`:
-- `POST users/:id?content=decline-request`
-- `POSTS users/:id?content=unfriend`
+- `GET /users/:id/sent-requests/`: get sent request
+- `POST /users/:id/sent-requests/:id`: send a request to user
+- `DELETE /users/:id/sent-requests/:id`: delete a sent request
 
-- `DELETE users/:id?content=user`: delete user
-
-- `PUT users/:id`
-- `PUT users/:id?content=user`: edit user
+- `GET /users/:id/friends`: get user's friends
+- `DELETE /users/:id/friends/:id`: unfriend

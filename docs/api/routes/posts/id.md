@@ -4,16 +4,15 @@
 - `PUT posts/:id`: edit post
 - `DELETE posts/:id`: delete post
 
-- `GET posts/:id?content=likes`: get likes of post
-- `POST posts/:id?content=likes`: like post
-- `POST posts/:id?content=likes&comment=comment-id`: like comment
-- `DELETE posts/:id?content=likes`: delete like on post
+- `GET posts/:id/likes`: get post likes
+- `POST posts/:id/likes`: create post like
+- `DELETE posts/:id/likes`: delete post like
 
-- `GET posts/:id?content=comments`: get comments of post
-- `POST posts/:id?content=comments`: create comments of post
-- `POST posts/:id?content=comments&comment=comment-id`: create comments of comment
-- `PUT posts/:id?content=comments&comment=comment-id`: update comments of post
-- `DELETE posts/:id?content=comments&comment=comment-id`: delete comment of post
+- `GET posts/:id/comments`: get post's comments, with likes
+- `POST posts/:id/comments`: create a comment
+- `PUT posts/:id/comments/:id`: update a comment
+- `DELETE posts/:id/comments/:id`: delete a comment
 
-- `GET posts/:id?content=comments&comment=comment-id`: get comments of comment
-- `GET posts/:id?content=likes&comment=comment-id`: get likes of comment
+- `POST posts/:id/comments/:id`: create a child comment
+- `POST posts/:id/comments/:id/likes`: create a comment like
+- `DELETE posts/:id/comments/:id/likes`: create a comment like
