@@ -11,14 +11,13 @@ content: liked-posts, liked-comments, posts
 - `GET users/:id?content=requests`: get sent requests
 - `POST users/:id?content=requests`: get sent requests
 
-- `GET users/:id?content=received-requests`: get sent requests
-- `GET users/:id?content=sent-requests`: get liked posts
+- `GET users/:id?content=received-requests`: get received requests
 
-- `GET users/:id?content=liked-posts`
-- `POST users/:id?content=send-request`
-- `DELETE users/:id?content=send-request`
+- `GET users/:id?content=sent-requests`: get sent posts
+- `POST users/:id?content=sent-request`: send a friend request
+- `DELETE users/:id?content=sent-request`: delete sent request
 
-- `POST users/:id?content=accept-request`
+- `POST users/:id?content=accept-request`:
 - `POST users/:id?content=decline-request`
 - `POSTS users/:id?content=unfriend`
 
