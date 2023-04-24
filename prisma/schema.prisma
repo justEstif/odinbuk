@@ -58,9 +58,10 @@ model Notification {
 model AuthUser {
   id           String        @id @unique
   username     String        @unique
-  bio          String
   auth_session AuthSession[]
   auth_key     AuthKey[]
+
+  bio String?
 
   // posts
   posts       Post[] @relation("Posts")
