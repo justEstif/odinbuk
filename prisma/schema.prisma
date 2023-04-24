@@ -7,12 +7,79 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Post {
+  id         String   @id @default(cuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  content  String // string or url
+  user     AuthUser   @relation("Posts", fields: [user_id], references: [id], onDelete: Cascade)
+  user_id  String
+  likes    AuthUser[] @relation("LikedPosts")
+  comments Comment[]  @relation("Comments")
+}
+
+model Comment {
+  id         String   @id @default(cuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  content String // string or url
+  post    Post   @relation("Comments", fields: [post_id], references: [id], onDelete: Cascade)
+  post_id String
+
+  user    AuthUser   @relation("Comments", fields: [user_id], references: [id], onDelete: Cascade)
+  user_id String
+  likes   AuthUser[] @relation("LikedComments")
+
+  // comment to comment relation
+  parentComment   Comment?  @relation("CommentParentsComment", fields: [parentCommentId], references: [id])
+  parentCommentId String?
+  childComments   Comment[] @relation("CommentParentsComment")
+}
+
+enum NotificationType {
+  RECEIVED_REQUEST
+  REQUEST_ACCEPTED
+  POST_LIKED
+  COMMENT_LIKED
+  COMMENT_REPLY
+}
+
+model Notification {
+  id      String           @id @default(cuid())
+  type    NotificationType
+  content String
+
+  user    AuthUser @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  user_id String
+}
+
 model AuthUser {
   id           String        @id @unique
   username     String        @unique
   bio          String
   auth_session AuthSession[]
   auth_key     AuthKey[]
+
+  // posts
+  posts       Post[] @relation("Posts")
+  liked_posts Post[] @relation("LikedPosts")
+
+  // comments
+  comments       Comment[] @relation("Comments")
+  liked_comments Comment[] @relation("LikedComments")
+
+  // notifications
+  notifications Notification[]
+
+  // received requests
+  sent_requests     AuthUser[] @relation("Requests")
+  received_requests AuthUser[] @relation("Requests")
+
+  // friends
+  friends    AuthUser[] @relation("Friends")
+  friends_of AuthUser[] @relation("Friends")
 
   @@map("auth_user")
 }
