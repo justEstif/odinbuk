@@ -1,5 +1,10 @@
 import { PrismaClient } from '@prisma/client';
+import { env } from '$env/dynamic/private';
 
-const db = new PrismaClient();
+const db = global.__prisma || new PrismaClient();
 
-export default db;
+if (env.NODE_ENV === 'development') {
+	global.__prisma = db;
+}
+
+export { db };
