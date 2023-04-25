@@ -4,31 +4,25 @@
 	import { signIn, signOut } from '@auth/sveltekit/client';
 </script>
 
-<div>
+<div class="container mx-auto bg-red-400">
 	<header>
-		<div>
-			<p>
-				{#if $page.data.session}
-					{#if $page.data.session.user?.image}
-						<span style="background-image: url('{$page.data.session.user.image}')" class="avatar" />
-					{/if}
-					<span class="signedInText">
-						<small>Signed in as</small><br />
-						<strong>{$page.data.session.user?.email ?? $page.data.session.user?.name}</strong>
-					</span>
-					<a href="/auth/signout" class="button" data-sveltekit-preload-data="off">Sign out</a>
-				{:else}
-					<span class="notSignedInText">You are not signed in</span>
-					<button on:click={() => signIn('github')} class="px-3 py-1 bg-black text-white"
-						>Sign In with GitHub</button>
-				{/if}
-			</p>
-		</div>
-		<nav>
-			<ul>
-				<li><a href="/">Home</a></li>
-			</ul>
-		</nav>
+		{#if $page.data.session}
+			{#if $page.data.session.user?.image}
+				<div class="avatar">
+					<div class="w-24 rounded-full">
+						<img src={$page.data.session.user.image} alt="profile-pic" />
+					</div>
+				</div>
+			{/if}
+			<span>
+				<small>Signed in as</small><br />
+				<strong>{$page.data.session.user?.email ?? $page.data.session.user?.name}</strong>
+			</span>
+			<button on:click={() => signOut()} class="btn">Sign out</button>
+			<a href="/auth/signout" class="button" data-sveltekit-preload-data="off">Sign out</a>
+		{:else}
+			<button on:click={() => signIn('github')} class="btn btn-primary">Sign In with GitHub</button>
+		{/if}
 	</header>
 	<slot />
 </div>
